@@ -34,10 +34,6 @@ main() {
     changeWorkingDirectory
   fi
 
-  if uses "${INPUT_USERNAME}" && uses "${INPUT_PASSWORD}"; then
-    echo "${INPUT_PASSWORD}" | docker login -u ${INPUT_USERNAME} --password-stdin ${INPUT_REGISTRY}
-  fi
-
   FIRST_TAG=$(echo "${TAGS}" | cut -d ' ' -f1)
   DOCKERNAME="${INPUT_NAME}:${FIRST_TAG}"
   BUILDPARAMS=""
@@ -62,6 +58,10 @@ main() {
   loginToGithubPackages
 
   build
+
+  if uses "${INPUT_USERNAME}" && uses "${INPUT_PASSWORD}"; then
+    echo "${INPUT_PASSWORD}" | docker login -u ${INPUT_USERNAME} --password-stdin ${INPUT_REGISTRY}
+  fi
 
   if usesBoolean "${INPUT_NO_PUSH}"; then
     if uses "${INPUT_USERNAME}" && uses "${INPUT_PASSWORD}"; then
