@@ -202,7 +202,7 @@ push() {
 }
 
 loginToGithubPackages() {
-  echo ${INPUT_GITHUB_TOKEN} | docker login docker.pkg.github.com --username ${INPUT_GITHUB_USERNAME} --password-stdin
+  echo ${INPUT_GITHUB_TOKEN} | docker login ghcr.io --username ${INPUT_GITHUB_USERNAME} --password-stdin
 }
 
 main
