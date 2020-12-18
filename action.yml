@@ -1,5 +1,5 @@
-name: 'Publish Docker'
-author: 'Lars Gohr'
+name: 'Publish Docker with additional login to github packages'
+author: 'Danny Morabito'
 branding:
   icon: 'anchor'
   color: 'blue'
