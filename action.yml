@@ -53,6 +53,13 @@ inputs:
   no_push:
     description: 'Set no_push to true if you want to prevent the action from pushing to a registry (default: false)'
     required: false
+  github_username:
+    description: 'The username to use for github packages'
+    required: true
+  github_token:
+    description: 'The token for github packages'
+    required: true
+
 outputs:
   tag:
     description: 'Is the tag, which was pushed'

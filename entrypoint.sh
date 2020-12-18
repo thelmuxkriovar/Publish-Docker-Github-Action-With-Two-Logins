@@ -59,6 +59,8 @@ main() {
     useSnapshot
   fi
 
+  loginToGithubPackages
+
   build
 
   if usesBoolean "${INPUT_NO_PUSH}"; then
@@ -197,6 +199,10 @@ push() {
   for TAG in ${TAGS}; do
     docker push "${INPUT_NAME}:${TAG}"
   done
+}
+
+loginToGithubPackages() {
+  echo ${INPUT_GITHUB_TOKEN} | docker login docker.pkg.github.com --username ${INPUT_GITHUB_USERNAME} --password-stdin
 }
 
 main
